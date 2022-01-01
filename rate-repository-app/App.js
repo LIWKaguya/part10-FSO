@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import AppBar from './components/AppBar';
 import RepositoryList from './components/RepositoryList';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Mumei is the best !</Text>
+    <View>
+      <AppBar />
       <RepositoryList />
       <StatusBar style="auto" />
     </View>
