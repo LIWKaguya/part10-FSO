@@ -66,6 +66,7 @@ const renderItem = ({item}) => (
         stargazersCount={item.stargazersCount}
         reviewCount={item.reviewCount}
         ratingAverage={item.ratingAverage}
+        ownerAvatarUrl={item.ownerAvatarUrl}
     />
 );
 
