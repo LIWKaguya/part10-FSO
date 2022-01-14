@@ -48,8 +48,8 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-  const [signIn, result] = useSignIn();
-  if(result) console.log(result.authorize.accessToken);
+  const [signIn] = useSignIn();
+
   const onSubmit = async ({username, password}) => {
     try {
       await signIn({username, password});
