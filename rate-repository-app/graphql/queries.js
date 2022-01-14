@@ -13,3 +13,12 @@ export const GET_REPOS = gql`
         }
     }
 `
+
+export const CHECK_USER = gql`
+    query {
+        authorizedUser {
+            id
+            username
+        }
+    }
+`
