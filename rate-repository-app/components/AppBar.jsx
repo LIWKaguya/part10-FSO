@@ -34,12 +34,9 @@ const AppBar = () => {
   const handleLogOut = async () => {
     await authStorage.removeAccessToken();
     apolloClient.resetStore();
-    history.push('/')
   }
 
   if(loading) return <Text>Loading...........</Text>
-
-  console.log(data)
 
   return (
     <View style={styles.container}>
