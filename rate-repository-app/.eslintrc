@@ -21,7 +21,8 @@
         "importMeta", 
         "classPrivateProperties", 
         "bigInt", 
-        "optionalCatchBinding"
+        "optionalCatchBinding",
+        "jest"
       ],
     "settings": {
       "react": {

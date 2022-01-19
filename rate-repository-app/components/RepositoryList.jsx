@@ -21,6 +21,7 @@ const renderItem = ({item}) => (
         reviewCount={item.reviewCount}
         ratingAverage={item.ratingAverage}
         ownerAvatarUrl={item.ownerAvatarUrl}
+        id={item.id}
     />
 );
 

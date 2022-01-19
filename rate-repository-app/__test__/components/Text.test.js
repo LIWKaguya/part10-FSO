@@ -5,17 +5,17 @@ import * as React from 'react';
 const Greeting = ({ name }) => {
   return (
     <View>
-      <Text>Hello {name}!</Text>
+      <Text testID={`${name}`}>Hello {name}!</Text>
     </View>
   );
 };
 
 describe('Greeting', () => {
   it('renders a greeting message based on the name prop', () => {
-    const { debug, getByText } = render(<Greeting name="Kalle" />);
+    const { debug, getByTestId } = render(<Greeting name="Kalle"/>);
 
     debug();
 
-    expect(getByText('Hello Kalle!')).toBeDefined();
+    expect(getByTestId('Kalle')).toHaveTextContent('Hello Kalle!');
   });
 });

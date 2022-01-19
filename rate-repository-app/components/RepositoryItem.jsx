@@ -38,7 +38,7 @@ const RepositoryItem = (props) => {
     });
 
     const myFormat = (value) => {
-        return value >= 1000 ? Math.round(value/100)/10 + "k" : value;
+        return value >= 1000 ? Math.round(value/100)/10 + "k" : value; 
     }
 
     return (    
@@ -51,46 +51,46 @@ const RepositoryItem = (props) => {
             </View>
             <View>
                 <View  style={styles.smallBoxHorizontal}>
-                    <Text style={styles.boldText}>{props.fullName}</Text>
+                    <Text style={styles.boldText} testID={`${props.id}@fullName`}>{props.fullName}</Text>
                 </View>
                 <View  style={styles.smallBoxHorizontal}>
-                    <Text>{props.description}</Text>
+                    <Text testID={`${props.id}@description`}>{props.description}</Text>
                 </View>
                 <View style={styles.smallBoxHorizontal}>
                     <View style={styles.customBox}>
-                        <Text style={styles.whiteText}>{props.language}</Text>
+                        <Text style={styles.whiteText} testID={`${props.id}@language`}>{props.language}</Text>
                     </View>
                 </View>
             </View>
         </View>
         <View style={styles.smallBoxHorizontal}>
             <View style={styles.smallBoxVertical}>
-                <View>
-                    <Text>{myFormat(props.stargazersCount)}</Text>
+                <View >
+                    <Text testID={`${props.id}@stars`}>{myFormat(props.stargazersCount)}</Text>
                 </View>
                 <View>
                     <Text>Stars</Text>
                 </View>
             </View>
             <View style={styles.smallBoxVertical}>
-                <View>
-                    <Text>{myFormat(props.forksCount)}</Text>
+                <View >
+                    <Text testID={`${props.id}@forks`}>{myFormat(props.forksCount)}</Text>
                 </View>
                 <View>
                     <Text>Forks</Text>
                 </View>
             </View>
             <View style={styles.smallBoxVertical}>
-                <View>
-                    <Text>{myFormat(props.reviewCount)}</Text>
+                <View >
+                    <Text testID={`${props.id}@review`}>{myFormat(props.reviewCount)}</Text>
                 </View>
                 <View>
                     <Text>Reviews</Text>
                 </View>
             </View>
             <View style={styles.smallBoxVertical}>
-                <View>
-                    <Text>{myFormat(props.ratingAverage)}</Text>
+                <View >
+                    <Text testID={`${props.id}@rating`}>{myFormat(props.ratingAverage)}</Text>
                 </View>
                 <View>
                     <Text>Ratings</Text>
