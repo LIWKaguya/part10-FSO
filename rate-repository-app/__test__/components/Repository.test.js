@@ -1,5 +1,6 @@
 import * as React from "react";
 import { render } from "@testing-library/react-native";
+import { myFormat } from '../../components/RepositoryItem'
 import { RepositoryListContainer } from "../../components/RepositoryList"; 
 
 describe("RepositoryList", () => {
@@ -52,12 +53,19 @@ describe("RepositoryList", () => {
             
             const {getByTestId} = render(<RepositoryListContainer repositories={repositories} />)
 
+            
+
             nodes.forEach(node =>
-              {
-                console.log(getByTestId(`${node.id}@fullName`));
-                expect(getByTestId(`${node.id}@fullName`)).toHaveTextContent(node.fullName); 
-              })
-           
+            {
+              [node.forksCount, node.stargazersCount, node.ratingAverage, node.reviewCount] = [node.forksCount, node.stargazersCount, node.ratingAverage, node.reviewCount].map(num => myFormat(num));
+              expect(getByTestId(`${node.id}@fullName`)).toHaveTextContent(node.fullName); 
+              expect(getByTestId(`${node.id}@description`)).toHaveTextContent(node.description); 
+              expect(getByTestId(`${node.id}@language`)).toHaveTextContent(node.language); 
+              expect(getByTestId(`${node.id}@forks`)).toHaveTextContent(node.forksCount); 
+              expect(getByTestId(`${node.id}@stars`)).toHaveTextContent(node.stargazersCount); 
+              expect(getByTestId(`${node.id}@rating`)).toHaveTextContent(node.ratingAverage); 
+              expect(getByTestId(`${node.id}@review`)).toHaveTextContent(node.reviewCount);
+            })
         })
     })
 })

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
+export const myFormat = (value) => {
+    return value >= 1000 ? Math.round(value/100)/10 + "k" : value; 
+}
+
 const RepositoryItem = (props) => {
     const styles = StyleSheet.create({
         box: {
@@ -36,10 +40,6 @@ const RepositoryItem = (props) => {
             height: 50
         }
     });
-
-    const myFormat = (value) => {
-        return value >= 1000 ? Math.round(value/100)/10 + "k" : value; 
-    }
 
     return (    
     <View style={styles.box}>    
