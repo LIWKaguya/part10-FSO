@@ -1,4 +1,3 @@
-
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import { SignInContainer } from '../../components/SignIn';
 import * as React from 'react';
