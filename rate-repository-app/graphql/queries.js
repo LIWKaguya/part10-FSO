@@ -22,3 +22,12 @@ export const CHECK_USER = gql`
         }
     }
 `
+
+export const SPECIFIC_REPO = gql`
+    ${REPO_DETAILS}
+    query getRepository($id: ID!) {
+        repository(id: $id) {
+          ...RepoDetails
+        }
+    }
+`

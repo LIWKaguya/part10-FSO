@@ -6,6 +6,7 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import theme from '../theme';
 import SignIn from './SignIn';
+import RepoAlone from './RepoAlone';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,9 @@ const Main = () => {
         <Route path='/login'>
             <SignIn />
         </Route>  
+        <Route path='/:id'>
+          <RepoAlone />
+        </Route>
       </Switch>
     </View>
   );

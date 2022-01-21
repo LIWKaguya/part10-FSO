@@ -97,13 +97,6 @@ const RepositoryItem = (props) => {
                 </View>
             </View>
         </View>
-        <View>
-            <Button onPress={() => {
-                Linking.openURL(props.url)
-            }}
-            title='Open in Github'
-            />
-        </View>
     </View>
     )
 }

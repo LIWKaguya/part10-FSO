@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
+import {useHistory} from 'react-router-native'
 
 const styles = StyleSheet.create({
   separator: {
@@ -11,31 +12,41 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const renderItem = ({item}) => (
-    <RepositoryItem  
-        fullName={item.fullName}
-        description={item.description}
-        language={item.language}
-        forksCount={item.forksCount}
-        stargazersCount={item.stargazersCount}
-        reviewCount={item.reviewCount}
-        ratingAverage={item.ratingAverage}
-        ownerAvatarUrl={item.ownerAvatarUrl}
-        id={item.id}
-        url={item.url}
-    />
-);
+// const renderItem = ({item}) => {
+//   return  (
+    
+//   )
+// };
 
 export const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
+  const history = useHistory();
+
   return (
     <FlatList
       data={repositoryNodes}
       keyExtractor={({ id }) => id}
-      renderItem={renderItem}
+      renderItem={({item}) => (
+        <Pressable onPress={() => {
+          history.push(`/${item.id}`)
+        }}>
+        <RepositoryItem  
+          fullName={item.fullName}
+          description={item.description}
+          language={item.language}
+          forksCount={item.forksCount}
+          stargazersCount={item.stargazersCount}
+          reviewCount={item.reviewCount}
+          ratingAverage={item.ratingAverage}
+          ownerAvatarUrl={item.ownerAvatarUrl}
+          id={item.id}
+          url={item.url}
+        />
+        </Pressable>
+      )}
       ItemSeparatorComponent={ItemSeparator}
     />
   );
