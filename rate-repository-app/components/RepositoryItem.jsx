@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, Button, Linking } from 'react-native';
 
 export const myFormat = (value) => {
     return value >= 1000 ? Math.round(value/100)/10 + "k" : value; 
@@ -96,6 +96,13 @@ const RepositoryItem = (props) => {
                     <Text>Ratings</Text>
                 </View>
             </View>
+        </View>
+        <View>
+            <Button onPress={() => {
+                Linking.openURL(props.url)
+            }}
+            title='Open in Github'
+            />
         </View>
     </View>
     )
