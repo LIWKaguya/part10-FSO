@@ -43,7 +43,6 @@ export const RepositoryListContainer = ({ repositories }) => {
           ratingAverage={item.ratingAverage}
           ownerAvatarUrl={item.ownerAvatarUrl}
           id={item.id}
-          url={item.url}
         />
         </Pressable>
       )}
