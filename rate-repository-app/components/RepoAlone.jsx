@@ -7,6 +7,7 @@ import { useLazyQuery } from "@apollo/client";
 import { SPECIFIC_REPO } from "../graphql/queries";
 import { useState } from "react";
 import { useHistory } from "react-router-native";
+import { format, parseISO } from "date-fns";
 
 const RepoDetails = ({ repo }) => {
     const history = useHistory();
@@ -42,16 +43,24 @@ const RepoDetails = ({ repo }) => {
 
 const ReviewItem = ({ review }) => {
     const {text, rating, createdAt, user } = review ;
+    const newDate = format(parseISO(createdAt), 'dd/MM/yyyy');
     const styles = StyleSheet.create({
         container: {
             flexDirection: 'row'
         },
         score: {
-            flex: 1
+            height: 50,
+            width: 50,
+            borderRadius: 25,
+            borderColor: 'blue',
+            borderStyle: "solid",
+            borderWidth: 3,
+            justifyContent: "center",
+            alignItems: "center",
         },
         review: {
             flex: 5,
-            textAlign: 'left'
+            textAlign: 'left',
         }
     });
     return (
@@ -60,8 +69,8 @@ const ReviewItem = ({ review }) => {
                 <Text>{rating}</Text>
             </View>
             <View style={styles.review}>
-                <Text>{user.username}</Text>
-                <Text>{createdAt}</Text>
+                <Text style={{color: 'red'}}>{user.username}</Text>
+                <Text style={{color: 'blue'}}>{newDate}</Text>
                 <Text>{text}</Text>
             </View>
         </View>
