@@ -17,3 +17,11 @@ export const REPO_DETAILS = gql`
         url
     }
 `
+
+export const USER_BASE_FIELDS = gql`
+    fragment userBase on User {
+        id
+        username
+        createdAt 
+    }
+`

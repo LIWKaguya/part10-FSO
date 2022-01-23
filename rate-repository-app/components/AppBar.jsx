@@ -49,6 +49,7 @@ const AppBar = () => {
         </Link>
       </View>
       {!data.authorizedUser ? 
+      <>
         <View style={{flex: 1}}>
           <Link to='/login'>
             <Text style={styles.text}>
@@ -56,6 +57,15 @@ const AppBar = () => {
             </Text>
           </Link>
         </View>
+        
+        <View style={{flex: 1}}>
+          <Link to='/sign_up'>
+            <Text style={styles.text}>
+              Sign up 
+            </Text>
+          </Link>
+        </View>
+      </> 
       :
       <>
         <View style={{flex: 1}}>
