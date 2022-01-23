@@ -8,12 +8,12 @@ const sortOptions = {
     lowest_rated_repos: { orderBy: "RATING_AVERAGE", orderDirection: "ASC" },
 }
 
-const useRepositories = (sortedWay) => {
+const useRepositories = ({sortedWay, filter}) => {
     const [repositories, setRepositories] = useState();
     
     const result = useQuery(GET_REPOS, {
         fetchPolicy: 'cache-and-network',
-        variables: sortOptions[sortedWay],
+        variables: { ...sortOptions[sortedWay] , filter},
         onCompleted: (data) => {
             setRepositories(data.repositories);
         }
