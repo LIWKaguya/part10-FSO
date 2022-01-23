@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 import useRepositories from '../hooks/useRepositories';
 import RepositoryItem from './RepositoryItem';
 import {useHistory} from 'react-router-native'
+import PickerSorting from './PickerSorting';
 
 const styles = StyleSheet.create({
   separator: {
@@ -12,13 +13,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-// const renderItem = ({item}) => {
-//   return  (
-    
-//   )
-// };
-
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, sortedWay, setSortedWay }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
@@ -29,6 +24,11 @@ export const RepositoryListContainer = ({ repositories }) => {
     <FlatList
       data={repositoryNodes}
       keyExtractor={({ id }) => id}
+      ListHeaderComponent={() => (
+        <PickerSorting 
+          setSortedWay={setSortedWay}
+          sortedWay={sortedWay} />
+      )}
       renderItem={({item}) => (
         <Pressable onPress={() => {
           history.push(`/${item.id}`)
@@ -52,9 +52,10 @@ export const RepositoryListContainer = ({ repositories }) => {
 };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const [sortedWay, setSortedWay] = useState('lowest_rated_repos')
+  const { repositories } = useRepositories(sortedWay);
  
-  return <RepositoryListContainer repositories={repositories} />
+  return <RepositoryListContainer repositories={repositories} sortedWay={sortedWay} setSortedWay={setSortedWay} />
 }
 
 
