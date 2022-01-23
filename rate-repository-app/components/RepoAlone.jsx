@@ -80,7 +80,9 @@ const ReviewItem = ({ review }) => {
 const ItemSeparator = () => <View style={{ height: 10}} />;
 
 const RepoAlone = () => {
-    const [getRepo, {data, loading}] = useLazyQuery(SPECIFIC_REPO);
+    const [getRepo, {data, loading}] = useLazyQuery(SPECIFIC_REPO, {
+        fetchPolicy: 'cache-and-network'
+    });
     const [repo, setRepo] = useState({});
     const { id } = useParams();
 

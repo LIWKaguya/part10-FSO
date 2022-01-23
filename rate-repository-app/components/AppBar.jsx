@@ -55,7 +55,9 @@ const AppBar = () => {
               Login
             </Text>
           </Link>
-        </View> :
+        </View>
+      :
+      <>
         <View style={{flex: 1}}>
           <Link to='/' onPress={handleLogOut}>
             <Text style={styles.text}>
@@ -63,6 +65,15 @@ const AppBar = () => {
             </Text>
           </Link>
         </View>
+
+        <View style={{flex: 1}}>
+          <Link to='/review'>
+            <Text style={styles.text}>
+              Create review 
+            </Text>
+          </Link>
+        </View>
+      </> 
       }
       </ScrollView>
     </View>
