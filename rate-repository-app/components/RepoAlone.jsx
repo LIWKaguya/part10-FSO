@@ -109,6 +109,8 @@ const RepoAlone = () => {
                 <RepoDetails repo={repo}/>
             )}
             ItemSeparatorComponent={ItemSeparator}
+            onEndReached={handleFetchMore}
+            onEndReachedThreshold={0.5}
         />
     )
 }

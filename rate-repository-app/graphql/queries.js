@@ -7,12 +7,21 @@ export const GET_REPOS = gql`
         $orderBy: AllRepositoriesOrderBy
         $orderDirection: OrderDirection
         $filter: String
+        $first: Int
+        $after: String
     ) {
-        repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $filter) {
+        repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $filter, first: $first, after: $after) {
+            totalCount
             edges {
                 node {
                     ...RepoDetails
                 }
+                cursor
+            }
+            pageInfo {
+                endCursor
+                startCursor
+                hasNextPage
             }
         }
     }
